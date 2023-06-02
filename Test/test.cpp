@@ -13,3 +13,10 @@ TEST(SimilarityCheckerTest, setString) {
 	EXPECT_EQ("ABCD", checker.getString(2));
 }
 
+TEST(SimilarityCheckerTest, stringCompare) {
+	SimilarityChecker checker;
+	EXPECT_EQ(0, checker.insertString("ABCD", "ABCDE"));
+	EXPECT_EQ(0, checker.strLengthCompare());
+	EXPECT_EQ("ABCDE", checker.getString(1));
+	EXPECT_EQ("ABCD", checker.getString(2));
+}
