@@ -26,11 +26,15 @@ public:
 
 	int strLengthCompare()
 	{
-		if (this->input1.length() >= this->input2.length())
-			return 0;
-		this->tmp = this->input1;
-		this->input1 = this->input2;
-		this->input2 = this->tmp;
+		if (this->input1.length() < this->input2.length())
+		{
+			this->tmp = this->input1;
+			this->input1 = this->input2;
+			this->input2 = this->tmp;
+		}
+
+		this->length1 = this->input1.length();
+		this->length2 = this->input2.length();
 
 		return 0;
 	}
@@ -38,4 +42,5 @@ public:
 private:
 	int length_score;
 	string input1, input2, tmp;
+	int length1, length2;
 };
