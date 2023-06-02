@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "../SimilarityChecker-1/SimilarityChecker-1.cpp"
 
-TEST(SimilarityCheckerTest, TestName) {
-  EXPECT_EQ(1, 1);
+TEST(SimilarityCheckerTest, getLengthScore) {
+	SimilarityChecker checker;
+	EXPECT_EQ(0, checker.get_length_score());
 }
