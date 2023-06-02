@@ -33,14 +33,39 @@ public:
 			this->input2 = this->tmp;
 		}
 
-		this->length1 = this->input1.length();
-		this->length2 = this->input2.length();
+		this->len1 = this->input1.length();
+		this->len2 = this->input2.length();
 
 		return 0;
+	}
+
+	int checkStringLength()
+	{
+		if (this->len1 == this->len2)
+		{
+			this->length_score = 60;
+		}
+		else if (this->len1 == (this->len2 * 2))
+		{
+			this->length_score = 0;
+		}
+		else 
+		{
+			int gap = this->len1 - this->len2;
+			this->length_score = 60 - (gap * 60 / this->len2);
+		}
+
+		return length_score;
+	}
+	int getLength(int num)
+	{
+		if (num == 1)
+			return this->input1.length();
+		return this->input2.length();
 	}
 
 private:
 	int length_score;
 	string input1, input2, tmp;
-	int length1, length2;
+	int len1, len2;
 };
