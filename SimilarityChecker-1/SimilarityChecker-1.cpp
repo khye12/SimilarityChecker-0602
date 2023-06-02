@@ -1,20 +1,71 @@
-﻿// SimilarityChecker-1.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
-//
+﻿#include <string>
+using namespace std;
 
-#include <iostream>
-
-int main()
+class SimilarityChecker
 {
-    std::cout << "Hello World!\n";
-}
+public:
+	SimilarityChecker(){
+		length_score = 0;
+	}
+	int get_length_score (void)
+	{
+		return this->length_score;
+	}
+	int insertString(string input1_, string input2_)
+	{
+		this->input1 = input1_;
+		this->input2 = input2_;
 
-// 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
-// 프로그램 디버그: <F5> 키 또는 [디버그] > [디버깅 시작] 메뉴
+		return 0;
+	}
+	string getString(int num)
+	{
+		if (num == 1) return this->input1;
+		return this->input2;
+	}
 
-// 시작을 위한 팁: 
-//   1. [솔루션 탐색기] 창을 사용하여 파일을 추가/관리합니다.
-//   2. [팀 탐색기] 창을 사용하여 소스 제어에 연결합니다.
-//   3. [출력] 창을 사용하여 빌드 출력 및 기타 메시지를 확인합니다.
-//   4. [오류 목록] 창을 사용하여 오류를 봅니다.
-//   5. [프로젝트] > [새 항목 추가]로 이동하여 새 코드 파일을 만들거나, [프로젝트] > [기존 항목 추가]로 이동하여 기존 코드 파일을 프로젝트에 추가합니다.
-//   6. 나중에 이 프로젝트를 다시 열려면 [파일] > [열기] > [프로젝트]로 이동하고 .sln 파일을 선택합니다.
+	int strLengthCompare()
+	{
+		if (this->input1.length() < this->input2.length())
+		{
+			this->tmp = this->input1;
+			this->input1 = this->input2;
+			this->input2 = this->tmp;
+		}
+
+		this->len1 = this->input1.length();
+		this->len2 = this->input2.length();
+
+		return 0;
+	}
+
+	int checkStringLength()
+	{
+		if (this->len1 == this->len2)
+		{
+			this->length_score = 60;
+		}
+		else if (this->len1 == (this->len2 * 2))
+		{
+			this->length_score = 0;
+		}
+		else 
+		{
+			int gap = this->len1 - this->len2;
+			this->length_score = 60 - (gap * 60 / this->len2);
+		}
+
+		return length_score;
+	}
+	int getLength(int num)
+	{
+		if (num == 1)
+			return this->input1.length();
+		return this->input2.length();
+	}
+
+private:
+	int length_score;
+	string input1, input2, tmp;
+	int len1, len2;
+};
